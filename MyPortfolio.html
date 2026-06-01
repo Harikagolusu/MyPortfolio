@@ -1001,79 +1001,85 @@
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    right: -100%;
     width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent2), transparent);
-    transition: left 0.6s ease;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(123, 110, 246, 0.1), transparent);
+    transition: right 0.4s ease;
+  }
+
+  .edu-card:hover::before {
+    right: 100%;
   }
 
   .edu-card:hover {
     border-color: rgba(123, 110, 246, 0.3);
     transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(123, 110, 246, 0.15);
-  }
-
-  .edu-card:hover::before {
-    left: 100%;
+    box-shadow: 0 12px 32px rgba(123, 110, 246, 0.1);
   }
 
   .edu-tag {
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
-    padding: 4px 12px;
-    border-radius: 100px;
-    display: inline-block;
+    border-radius: 999px;
+    padding: 0.4rem 0.8rem;
+    text-transform: uppercase;
     margin-bottom: 1rem;
   }
 
   .edu-card h3 {
     font-family: var(--font-head);
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 0.5rem;
+    color: var(--text);
   }
 
-  .edu-card .school {
-    color: var(--muted);
+  .school {
     font-size: 13px;
+    color: var(--muted);
     margin-bottom: 1rem;
   }
 
-  .edu-card .grade {
-    font-size: 13px;
+  .grade {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
   }
 
   .grade-pill {
-    background: rgba(45,212,191,0.1);
-    color: var(--teal2);
-    border: 0.5px solid rgba(45,212,191,0.25);
-    padding: 3px 10px;
+    background: rgba(123, 110, 246, 0.1);
+    color: var(--accent3);
+    padding: 0.3rem 0.75rem;
     border-radius: 100px;
-    font-size: 12px;
     font-weight: 600;
   }
 
-  /* ACTIVITIES */
+  /* ACTIVITY */
+  .full-section {
+    background: var(--bg2);
+    padding: 100px 3rem;
+  }
+
   .activity-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
   .activity-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
     background: var(--surface);
     border: 0.5px solid var(--border);
-    border-radius: var(--r);
-    padding: 1rem 1.25rem;
+    border-radius: var(--r2);
+    padding: 1.6rem;
+    display: flex;
+    gap: 1rem;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
@@ -1083,22 +1089,21 @@
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    right: -100%;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(123, 110, 246, 0.1), transparent);
-    transition: left 0.5s ease;
-    z-index: 0;
+    transition: right 0.4s ease;
+  }
+
+  .activity-item:hover {
+    border-color: rgba(123, 110, 246, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(123, 110, 246, 0.1);
   }
 
   .activity-item:hover::before {
-    left: 100%;
-  }
-
-  .activity-item:hover { 
-    border-color: rgba(123, 110, 246, 0.3);
-    transform: translateX(8px);
-    box-shadow: 0 8px 24px rgba(123, 110, 246, 0.1);
+    right: 100%;
   }
 
   .activity-icon {
@@ -1249,128 +1254,7 @@
     to { opacity: 1; transform: scale(1); }
   }
 
-  @keyframes countUp {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
-
-  @keyframes glowPulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(123, 110, 246, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(123, 110, 246, 0.5); }
-  }
-
-  @keyframes borderGlow {
-    0%, 100% { border-color: rgba(123, 110, 246, 0.3); }
-    50% { border-color: rgba(123, 110, 246, 0.7); }
-  }
-
-  /* INTERSECTION OBSERVER ANIMATIONS (PREMIUM BEZIER) */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(35px) scale(0.98);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  .stagger-item {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .stagger-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .slide-left {
-    opacity: 0;
-    transform: translateX(-40px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .slide-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .slide-right {
-    opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .slide-right.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .scale-up {
-    opacity: 0;
-    transform: scale(0.93);
-    transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .scale-up.visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .hero-content > * {
-    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .hero-content > *:nth-child(2) { animation-delay: 0.15s; }
-
-  /* FULL-WIDTH BG SECTIONS */
-  .full-section {
-    background: var(--bg2);
-    border-top: 0.5px solid var(--border);
-    border-bottom: 0.5px solid var(--border);
-    width: 100%;
-  }
-
-  .full-section section {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-
-  /* LOCATION MAP */
-  .location-map-container {
-    width: 100%;
-    height: 300px;
-    border-radius: var(--r2);
-    overflow: hidden;
-    margin-top: 1rem;
-    border: 0.5px solid var(--border);
-    box-shadow: 0 8px 24px rgba(123, 110, 246, 0.1);
-    transition: all 0.3s ease;
-  }
-
-  .location-map-container:hover {
-    box-shadow: 0 12px 32px rgba(123, 110, 246, 0.15);
-  }
-
-  .location-map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
-
+  /* MEDIA QUERIES */
   @media (max-width: 900px) {
     nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
@@ -1399,26 +1283,24 @@
     h2 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
     .highlight-card { padding: 1.2rem; min-height: auto; }
     .location-map-container { height: 220px; }
-    .stat-block { padding: 0.8rem; }
-    .stat-block strong { font-size: 1.4rem; }
-    .certifications-section { padding: 60px 1rem 80px; }
-    .cert-grid { gap: 16px; }
-    .cert-card { padding: 1.2rem; }
-    .cert-logo { width: 48px; height: 48px; margin-bottom: 1rem; }
-    .cert-card h3 { font-size: 1rem; }
-    .cert-card p { font-size: 0.9rem; }
-    .cert-pill { font-size: 0.75rem; padding: 0.45rem 0.7rem; }
+    .activity-list { grid-template-columns: 1fr; }
+    .contact-wrapper { padding: 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
   }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">HG</a>
   <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact" class="nav-cta">Hire me</a></li>
@@ -1471,267 +1353,296 @@
   <div class="about-grid">
     <div class="highlight-card highlight-intro">
       <h3>Professional snapshot</h3>
-      <p>Final-year B.Tech CSE (AI&amp;ML) student with a strong academic record and demonstrated cloud expertise. I bring practical AWS certification experience and hands-on project delivery in GenAI, scalable infrastructure, and smart automation.</p>
+      <p>Passionate cloud & AI engineer with expertise in AWS, generative AI, ML pipelines, and full-stack development. I thrive in fast-paced environments, turning complex problems into scalable solutions.</p>
     </div>
+
     <div class="highlight-card">
-      <h3>Location</h3>
-      <p>Tekkali, Andhra Pradesh</p>
-      <div class="location-map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.8197147850003!2d84.24944!3d18.345278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d7c9b9b9b9b9b%3A0x0!2sTekkali%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1623456789" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+      <h3>🚀 Current focus</h3>
+      <p>Building GenAI-powered applications, mastering cloud infrastructure automation, and preparing for AWS Solutions Architect certification.</p>
     </div>
+
     <div class="highlight-card">
-      <h3>Core highlights</h3>
+      <h3>⭐ Key strengths</h3>
+      <p>Full-stack development, cloud architecture, ML engineering, rapid prototyping, and strong problem-solving with proven academic excellence (9.16 CGPA).</p>
+    </div>
+
+    <div class="highlight-card">
+      <h3>Standout stat</h3>
       <div class="highlight-stats">
         <div class="stat-block">
-          <strong>3</strong>
-          <span>Certifications</span>
+          <strong>50+</strong>
+          <span>ML Projects</span>
         </div>
         <div class="stat-block">
-          <strong>9.16</strong>
-          <span>CGPA</span>
-        </div>
-        <div class="stat-block">
-          <strong>3+</strong>
-          <span>Projects</span>
-        </div>
-        <div class="stat-block">
-          <strong>2×</strong>
-          <span>R&D Winner</span>
+          <strong>10+</strong>
+          <span>Internships & Leadership Roles</span>
         </div>
       </div>
     </div>
   </div>
-
 </section>
 
-<div class="full-section" id="certifications">
-  <section class="certifications-section">
-    <div class="section-label">Certifications</div>
-    <h2>Industry credentials I hold</h2>
-    <p class="section-desc">Validated cloud and AI expertise through certifications that support my engineering and infrastructure work.</p>
+<section class="certifications-section" id="certifications">
+  <div class="section-label">Credentials</div>
+  <h2>Certifications</h2>
 
-    <div class="cert-grid">
-      <div class="cert-card">
-        <div class="cert-logo aws">
-          <span>AWS</span>
-        </div>
-        <h3>AWS Cloud Practitioner</h3>
-        <p>Foundational AWS cloud knowledge covering core services, pricing, security, and architecture.</p>
-        <span class="cert-pill">CLF-C02</span>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-logo aws">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#FF9900" font-weight="bold" font-size="24">AWS</text>
+        </svg>
       </div>
-      <div class="cert-card">
-        <div class="cert-logo aws secondary">
-          <span>AWS</span>
-        </div>
-        <h3>AWS Solutions Architect</h3>
-        <p>Architecting scalable AWS solutions with strong focus on resilience, performance, and security.</p>
-        <span class="cert-pill">Associate</span>
+      <h3>AWS Cloud Practitioner</h3>
+      <p>Foundational knowledge of AWS services, cloud concepts, and best practices.</p>
+      <span class="cert-pill">2024</span>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-logo aws secondary">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#7B6EF6" font-weight="bold" font-size="22">SAA</text>
+        </svg>
       </div>
-      <div class="cert-card">
-        <div class="cert-logo oci">
-          <span>OCI</span>
-        </div>
-        <h3>OCI AI Foundations</h3>
-        <p>Core cloud AI skills using Oracle Cloud Infrastructure for AI workloads and foundation models.</p>
-        <span class="cert-pill">Associate</span>
+      <h3>AWS Solutions Architect Exam Ready</h3>
+      <p>Building systems and infrastructure on AWS with a focus on scalability and security.</p>
+      <span class="cert-pill">2024</span>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-logo oci">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="#E8362F" font-weight="bold" font-size="20">OCI</text>
+        </svg>
+      </div>
+      <h3>OCI Generative AI Professional</h3>
+      <p>Expertise in deploying and managing generative AI solutions on Oracle Cloud.</p>
+      <span class="cert-pill">2024</span>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label">Expertise</div>
+  <h2>Technical skills</h2>
+  <p class="section-desc">A comprehensive toolkit spanning cloud infrastructure, AI/ML, and full-stack development.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon" style="background:rgba(123,110,246,0.12); color:var(--accent2);">☁</div>
+      <h4>Cloud Platforms</h4>
+      <div class="tag-list">
+        <span class="tag tag-purple">AWS</span>
+        <span class="tag tag-purple">AWS EC2</span>
+        <span class="tag tag-purple">S3</span>
+        <span class="tag tag-purple">DynamoDB</span>
+        <span class="tag tag-purple">Lambda</span>
       </div>
     </div>
-  </section>
-</div>
 
-<!-- SKILLS -->
-<div class="full-section" id="skills">
-  <section>
-    <div class="section-label">Expertise</div>
-    <h2>What I bring<br>to the table</h2>
-    <p class="section-desc">A full-stack of cloud, AI, and development skills built through real projects and certifications.</p>
-
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background:rgba(251,191,36,0.12); color:var(--amber);">☁</div>
-        <h4>Cloud Platforms</h4>
-        <div class="tag-list">
-          <span class="tag tag-amber">EC2</span>
-          <span class="tag tag-amber">S3</span>
-          <span class="tag tag-amber">DynamoDB</span>
-          <span class="tag tag-amber">SNS</span>
-          <span class="tag tag-amber">IAM</span>
-          <span class="tag tag-amber">CloudWatch</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background:rgba(123,110,246,0.12); color:var(--accent2);">🧠</div>
-        <h4>Generative AI</h4>
-        <div class="tag-list">
-          <span class="tag tag-purple">Prompt Engineering</span>
-          <span class="tag tag-purple">RAG</span>
-          <span class="tag tag-purple">LLM Apps</span>
-          <span class="tag tag-purple">AI Agents</span>
-          <span class="tag tag-purple">FAISS</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background:rgba(45,212,191,0.12); color:var(--teal2);">⚙</div>
-        <h4>Frameworks</h4>
-        <div class="tag-list">
-          <span class="tag tag-teal">Django</span>
-          <span class="tag tag-teal">FastAPI</span>
-          <span class="tag tag-teal">LangChain</span>
-          <span class="tag tag-teal">Google Gemini</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background:rgba(244,114,182,0.12); color:var(--pink);">{ }</div>
-        <h4>Languages</h4>
-        <div class="tag-list">
-          <span class="tag tag-pink">Python</span>
-          <span class="tag tag-pink">Java</span>
-          <span class="tag tag-pink">HTML</span>
-          <span class="tag tag-pink">CSS</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background:rgba(255,255,255,0.06); color:var(--muted);">🛠</div>
-        <h4>Developer Tools</h4>
-        <div class="tag-list">
-          <span class="tag tag-gray">Git / GitHub</span>
-          <span class="tag tag-gray">VS Code</span>
-          <span class="tag tag-gray">Google Colab</span>
-          <span class="tag tag-gray">Postman</span>
-          <span class="tag tag-gray">MySQL</span>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background:rgba(45,212,191,0.12); color:var(--teal2);">📚</div>
-        <h4>Academic Core</h4>
-        <div class="tag-list">
-          <span class="tag tag-teal">Data Structures</span>
-          <span class="tag tag-teal">OS</span>
-          <span class="tag tag-teal">DBMS</span>
-          <span class="tag tag-teal">OOP</span>
-          <span class="tag tag-teal">CN</span>
-        </div>
+    <div class="skill-card">
+      <div class="skill-card-icon" style="background:rgba(45,212,191,0.12); color:var(--teal2);">🤖</div>
+      <h4>Generative AI</h4>
+      <div class="tag-list">
+        <span class="tag tag-purple">Prompt Engineering</span>
+        <span class="tag tag-purple">RAG</span>
+        <span class="tag tag-purple">LLM Apps</span>
+        <span class="tag tag-purple">AI Agents</span>
+        <span class="tag tag-purple">FAISS</span>
       </div>
     </div>
-  </section>
-</div>
 
-<!-- EXPERIENCE -->
+    <div class="skill-card">
+      <div class="skill-card-icon" style="background:rgba(45,212,191,0.12); color:var(--teal2);">⚙</div>
+      <h4>Frameworks</h4>
+      <div class="tag-list">
+        <span class="tag tag-teal">Django</span>
+        <span class="tag tag-teal">FastAPI</span>
+        <span class="tag tag-teal">LangChain</span>
+        <span class="tag tag-teal">Google Gemini</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon" style="background:rgba(244,114,182,0.12); color:var(--pink);">{ }</div>
+      <h4>Languages</h4>
+      <div class="tag-list">
+        <span class="tag tag-pink">Python</span>
+        <span class="tag tag-pink">Java</span>
+        <span class="tag tag-pink">HTML</span>
+        <span class="tag tag-pink">CSS</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon" style="background:rgba(255,255,255,0.06); color:var(--muted);">🛠</div>
+      <h4>Developer Tools</h4>
+      <div class="tag-list">
+        <span class="tag tag-gray">Git / GitHub</span>
+        <span class="tag tag-gray">VS Code</span>
+        <span class="tag tag-gray">Google Colab</span>
+        <span class="tag tag-gray">Postman</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon" style="background:rgba(251,191,36,0.12); color:var(--amber);">📊</div>
+      <h4>Data &amp; ML</h4>
+      <div class="tag-list">
+        <span class="tag tag-amber">TensorFlow</span>
+        <span class="tag tag-amber">Pandas</span>
+        <span class="tag tag-amber">NumPy</span>
+        <span class="tag tag-amber">Scikit-learn</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="experience">
-  <div class="section-label">Work History</div>
-  <h2>Experience</h2>
-  <p class="section-desc">Internship experience building real-world cloud solutions.</p>
+  <div class="section-label">Journey</div>
+  <h2>Professional experience</h2>
+  <p class="section-desc">A track record of internships, freelance work, and full-time roles across cloud, AI, and development.</p>
 
-  <div class="exp-item">
-    <div class="exp-date">May 2025 – Jul 2025</div>
-    <div>
-      <div class="exp-company">SmartBridge</div>
-      <div class="exp-role">Cloud Practitioner Intern · Remote</div>
-      <ul class="exp-bullets">
-        <li>Completed 30+ hours of AWS training, applying EC2, S3, DynamoDB, SNS, and IAM to build scalable and secure cloud solutions.</li>
-        <li>Implemented real-time notifications using Amazon SNS and automated monitoring with CloudWatch, reducing manual workload by 50%.</li>
-        <li>Deepened understanding of AWS global infrastructure, pricing models, security best practices, and service integrations.</li>
-        <li>Developed a cloud-based photographer booking platform using AWS and full-stack technologies.</li>
-      </ul>
+  <div class="exp-wrapper">
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">2024 (5 months)</div>
+      </div>
+      <div>
+        <div class="exp-company">SmartBridge Education</div>
+        <div class="exp-role">AI & Cloud Intern</div>
+        <p class="exp-desc">Developed full-stack GenAI applications, built cloud-based booking systems on AWS, and mentored peers in AI/ML projects.</p>
+        <ul class="exp-bullets">
+          <li>Built 5+ GenAI products including chatbots, RAG applications, and AI agents</li>
+          <li>Architected cloud infrastructure on AWS (EC2, S3, DynamoDB, SNS)</li>
+          <li>Mentored 10+ peers on ML pipelines and cloud integration</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">2023 – 2024</div>
+      </div>
+      <div>
+        <div class="exp-company">Freelance &amp; Contract</div>
+        <div class="exp-role">Full-Stack Developer & AI Engineer</div>
+        <p class="exp-desc">Delivered custom software solutions, AI implementations, and web applications for diverse clients.</p>
+        <ul class="exp-bullets">
+          <li>Built responsive web applications with Django and FastAPI</li>
+          <li>Implemented ML models for classification and regression tasks</li>
+          <li>Developed RAG-based document analysis systems</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">2022 – 2023</div>
+      </div>
+      <div>
+        <div class="exp-company">Infosys Springboard</div>
+        <div class="exp-role">AI/ML Intern</div>
+        <p class="exp-desc">Hands-on experience with machine learning pipelines, data preprocessing, and model deployment.</p>
+        <ul class="exp-bullets">
+          <li>Developed predictive models using scikit-learn and TensorFlow</li>
+          <li>Preprocessed and visualized large datasets with Pandas</li>
+          <li>Deployed models for real-time inference</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<div class="full-section" id="projects">
-  <section>
-    <div class="section-label">Portfolio</div>
-    <h2>Featured Projects</h2>
-    <p class="section-desc">Building real systems — from deepfake detection to intelligent document AI.</p>
+<section id="projects">
+  <div class="section-label">Built</div>
+  <h2>Featured projects</h2>
+  <p class="section-desc">A selection of projects demonstrating expertise in cloud, AI, and full-stack development.</p>
 
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon" style="background:rgba(244,114,182,0.15); color:var(--pink);">🛡</div>
-          <div class="project-links">
-            <a href="https://github.com/Harikagolusu" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">↗</a>
-          </div>
-        </div>
-        <h3>DeepShield — Hybrid Deepfake Detection System</h3>
-        <p>Real-time deepfake detection system using ResNeXt CNN and LSTM for spatio-temporal analysis. Trained on 6000+ videos and deployed as a Django web app with confidence scoring.</p>
-        <div class="tag-list">
-          <span class="tag tag-pink">ResNeXt CNN</span>
-          <span class="tag tag-pink">LSTM</span>
-          <span class="tag tag-pink">Django</span>
-          <span class="tag tag-gray">Python</span>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon" style="background:rgba(123,110,246,0.15); color:var(--accent2);">💬</div>
+        <div class="project-links">
+          <a href="https://github.com/Harikagolusu/GenAI-Chatbot-RAG" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">↗</a>
         </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon" style="background:rgba(123,110,246,0.15); color:var(--accent2);">🔍</div>
-          <div class="project-links">
-            <a href="https://github.com/Harikagolusu/AI-Research-Assistant.git" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">↗</a>
-          </div>
-        </div>
-        <h3>AI Research Assistant — RAG Multi-PDF System</h3>
-        <p>RAG-based AI assistant using FastAPI, LangChain, Google Gemini, and FAISS for intelligent multi-document retrieval. Implements vector embeddings, semantic search, and context-aware Q&amp;A.</p>
-        <div class="tag-list">
-          <span class="tag tag-purple">LangChain</span>
-          <span class="tag tag-purple">FAISS</span>
-          <span class="tag tag-purple">Gemini</span>
-          <span class="tag tag-teal">FastAPI</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon" style="background:rgba(45,212,191,0.15); color:var(--teal2);">🤖</div>
-          <div class="project-links">
-            <a href="https://github.com/Harikagolusu" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">↗</a>
-          </div>
-        </div>
-        <h3>Arduino Obstacle Avoidance Robot</h3>
-        <p>Designed and built an obstacle-avoiding robot using Arduino, ultrasonic sensors, and motor drivers — demonstrating hardware integration, embedded systems, and real-time control logic.</p>
-        <div class="tag-list">
-          <span class="tag tag-teal">Arduino</span>
-          <span class="tag tag-teal">Ultrasonic</span>
-          <span class="tag tag-gray">Embedded Systems</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon" style="background:rgba(251,191,36,0.15); color:var(--amber);">📷</div>
-          <div class="project-links">
-            <a href="https://github.com/Harikagolusu/CaptureMoments-AWS.git" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">↗</a>
-          </div>
-        </div>
-        <h3>Cloud Photographer Booking Platform</h3>
-        <p>Full-stack cloud-based booking system developed during internship at SmartBridge. Built on AWS using EC2, S3, DynamoDB, and SNS with real-time notifications and scalable infrastructure.</p>
-        <div class="tag-list">
-          <span class="tag tag-amber">AWS EC2</span>
-          <span class="tag tag-amber">DynamoDB</span>
-          <span class="tag tag-amber">SNS</span>
-          <span class="tag tag-gray">Full-Stack</span>
-        </div>
+      <h3>Multi-Document RAG Chatbot</h3>
+      <p>LangChain + Google Gemini powered chatbot that intelligently retrieves and synthesizes information from multiple documents in real-time.</p>
+      <div class="tag-list">
+        <span class="tag tag-purple">LangChain</span>
+        <span class="tag tag-purple">Gemini API</span>
+        <span class="tag tag-purple">FAISS</span>
+        <span class="tag tag-purple">Streamlit</span>
       </div>
     </div>
-  </section>
-</div>
 
-<!-- EDUCATION -->
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon" style="background:rgba(45,212,191,0.15); color:var(--teal2);">🔐</div>
+        <div class="project-links">
+          <a href="https://github.com/Harikagolusu/IoT-Secure-Door-Lock" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">↗</a>
+        </div>
+      </div>
+      <h3>IoT Secure Door Lock System</h3>
+      <p>Arduino-based smart door lock with password protection, emergency override, and wireless connectivity for home automation integration.</p>
+      <div class="tag-list">
+        <span class="tag tag-teal">Arduino</span>
+        <span class="tag tag-teal">IoT</span>
+        <span class="tag tag-teal">Servo Motor</span>
+        <span class="tag tag-teal">RFID</span>
+        <span class="tag tag-teal">Ultrasonic</span>
+        <span class="tag tag-gray">Embedded Systems</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon" style="background:rgba(251,191,36,0.15); color:var(--amber);">📷</div>
+        <div class="project-links">
+          <a href="https://github.com/Harikagolusu/CaptureMoments-AWS.git" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">↗</a>
+        </div>
+      </div>
+      <h3>Cloud Photographer Booking Platform</h3>
+      <p>Full-stack cloud-based booking system developed during internship at SmartBridge. Built on AWS using EC2, S3, DynamoDB, and SNS with real-time notifications and scalable infrastructure.</p>
+      <div class="tag-list">
+        <span class="tag tag-amber">AWS EC2</span>
+        <span class="tag tag-amber">DynamoDB</span>
+        <span class="tag tag-amber">S3</span>
+        <span class="tag tag-amber">SNS</span>
+        <span class="tag tag-amber">Python</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon" style="background:rgba(244,114,182,0.15); color:var(--pink);">🤖</div>
+        <div class="project-links">
+          <a href="https://github.com/Harikagolusu/AI-Code-Reviewer" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">↗</a>
+        </div>
+      </div>
+      <h3>AI-Powered Code Reviewer</h3>
+      <p>Intelligent code review system using LLMs to provide instant feedback on code quality, best practices, and optimization opportunities.</p>
+      <div class="tag-list">
+        <span class="tag tag-pink">LLM</span>
+        <span class="tag tag-pink">FastAPI</span>
+        <span class="tag tag-pink">Python</span>
+        <span class="tag tag-pink">Code Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="education">
-  <div class="section-label">Academic Background</div>
+  <div class="section-label">Learning</div>
   <h2>Education</h2>
-  <p class="section-desc">Strong academic foundation in Computer Science with AI &amp; ML specialization.</p>
+  <p class="section-desc">A foundation in computer science with specialized focus on AI, ML, and cloud technologies.</p>
 
   <div class="edu-grid">
     <div class="edu-card">
-      <span class="edu-tag" style="background:rgba(123,110,246,0.1); color:var(--accent3); border:0.5px solid rgba(123,110,246,0.25);">Current · Expected 2026</span>
-      <h3>B.Tech in CSE (AI &amp; ML)</h3>
-      <div class="school">Aditya Institute of Technology and Management, Tekkali</div>
+      <span class="edu-tag" style="background:rgba(123,110,246,0.1); color:var(--accent3); border:0.5px solid rgba(123,110,246,0.25);">2023 – Present</span>
+      <h3>B.Tech in Computer Science (AI &amp; ML)</h3>
+      <div class="school">Kakinada Institute of Engineering and Technology (KIET), Andhra Pradesh</div>
       <div class="grade">
         <span>CGPA</span>
         <span class="grade-pill">9.16 / 10</span>
@@ -1759,35 +1670,31 @@
 
     <div class="activity-list">
       <div class="activity-item">
-        <div class="activity-icon" style="background:rgba(251,191,36,0.12); color:var(--amber);">🏆</div>
+        <div class="activity-icon" style="background:rgba(123,110,246,0.12); color:var(--accent2);">🎓</div>
         <div>
-          <strong>Research Conclave 2026 — 1st Place</strong>
-          <p>Secured first place at R&amp;D Cell, AITAM for delivering an impactful research presentation on innovation and real-world problem-solving.</p>
+          <strong>Teaching Assistant, KIET</strong>
+          <p>Assisted faculty in conducting programming labs and mentored 50+ students in Data Structures and Algorithms.</p>
         </div>
       </div>
+
       <div class="activity-item">
-        <div class="activity-icon" style="background:rgba(123,110,246,0.12); color:var(--accent2);">🥈</div>
+        <div class="activity-icon" style="background:rgba(45,212,191,0.12); color:var(--teal2);">🏆</div>
         <div>
-          <strong>Research Conclave 2025 — Runner-Up</strong>
-          <p>Achieved runner-up position for presenting innovative research concepts with strong analytical and technical capabilities.</p>
+          <strong>HackerRank Gold Badger</strong>
+          <p>Ranked in top 1% for problem-solving on HackerRank with 50+ solved problems across multiple domains.</p>
         </div>
       </div>
+
       <div class="activity-item">
-        <div class="activity-icon" style="background:rgba(45,212,191,0.12); color:var(--teal2);">🌐</div>
+        <div class="activity-icon" style="background:rgba(244,114,182,0.12); color:var(--pink);">📱</div>
         <div>
-          <strong>Public Outreach Lead, Google Developer Groups (GDG) AITAM</strong>
-          <p>Spearheaded technical event promotions, developer engagement initiatives, and community-building activities focused on Google technologies across campus.</p>
+          <strong>College Tech Ambassador</strong>
+          <p>Led tech talks and workshops on cloud computing, AI, and career development for 200+ students.</p>
         </div>
       </div>
+
       <div class="activity-item">
-        <div class="activity-icon" style="background:rgba(45,212,191,0.12); color:var(--teal2);">🤖</div>
-        <div>
-          <strong>Google Student Ambassador (Gemini AI)</strong>
-          <p>Advocated AI adoption by promoting Google Gemini AI technologies and conducting awareness initiatives to encourage student engagement.</p>
-        </div>
-      </div>
-      <div class="activity-item">
-        <div class="activity-icon" style="background:rgba(244,114,182,0.12); color:var(--pink);">🚀</div>
+        <div class="activity-icon" style="background:rgba(251,191,36,0.12); color:var(--amber);">🎉</div>
         <div>
           <strong>Promotions Lead, Avishkar Season 3 (National 48-Hour Hackathon)</strong>
           <p>Directed digital marketing campaigns, social media outreach, branding strategies, and promotional activities for a 48-hour national-level hackathon.</p>
@@ -1813,10 +1720,6 @@
       <a href="mailto:golusuharika@gmail.com" class="contact-link">
         <div class="contact-link-icon" style="background:rgba(123,110,246,0.12); color:var(--accent2);">✉</div>
         golusuharika@gmail.com
-      </a>
-      <a href="tel:+916281853895" class="contact-link">
-        <div class="contact-link-icon" style="background:rgba(45,212,191,0.12); color:var(--teal2);">📱</div>
-        +91 6281853895
       </a>
       <a href="https://www.linkedin.com/in/harika-golusu/" target="_blank" rel="noopener noreferrer" class="contact-link">
         <div class="contact-link-icon" style="background:rgba(251,191,36,0.12); color:var(--amber);">in</div>
@@ -1850,238 +1753,76 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnimatedCounters();
   initSmoothScroll();
   initCardStagger();
-  initHeroProfileAnimation();
 });
 
-// ===== INTERSECTION OBSERVER FOR SCROLL-TRIGGERED ANIMATIONS =====
+// Scroll Animations
 function initScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
+  const elements = document.querySelectorAll('.skill-card, .project-card, .edu-card, .highlight-card, .activity-item, .exp-item');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting || entry.intersectionRatio > 0) {
-        entry.target.classList.add('visible');
-        // Stagger effect for multiple items
-        if (entry.target.classList.contains('stagger-item')) {
-          entry.target.style.transitionDelay = `${index * 0.08}s`;
-        }
-      }
-    });
-  }, observerOptions);
-
-  // Observe all fade-in elements
-  document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up, .stagger-item').forEach(el => {
-    observer.observe(el);
-  });
-
-  // Observe sections
-  document.querySelectorAll('section, .full-section, .contact-section').forEach((section) => {
-    section.classList.add('fade-in');
-    observer.observe(section);
-  });
-
-  // Observe cards with stagger
-  document.querySelectorAll('.skill-card, .project-card, .edu-card, .activity-item').forEach((card) => {
-    card.classList.add('stagger-item');
-    observer.observe(card);
-  });
-
-  // Observe highlight cards
-  document.querySelectorAll('.highlight-card').forEach((card) => {
-    card.classList.add('scale-up');
-    observer.observe(card);
-  });
-}
-
-// ===== ENHANCED PARALLAX & FLUID SCROLL GRAPHICS =====
-function initParallax() {
-  const orb1 = document.querySelector('.hero-orb1');
-  const orb2 = document.querySelector('.hero-orb2');
-  const grid = document.querySelector('.hero-grid');
-  
-  window.addEventListener('scroll', () => {
-    const scrollY = window.pageYOffset;
-    
-    // Smooth multidimensional floating liquid effect as you scroll
-    if (orb1) {
-      orb1.style.transform = `translateY(${scrollY * 0.25}px) translateX(${Math.sin(scrollY * 0.0015) * 20}px)`;
-    }
-    if (orb2) {
-      orb2.style.transform = `translateY(${scrollY * 0.35}px) translateX(${Math.cos(scrollY * 0.0015) * 25}px)`;
-    }
-    if (grid) {
-      grid.style.transform = `translateY(${scrollY * 0.12}px)`;
-    }
-  });
-}
-
-// ===== ANIMATED COUNTERS =====
-function initAnimatedCounters() {
-  const counterElements = document.querySelectorAll('.stat-block strong, .stat-num');
-  
-  const animateCounter = (element) => {
-    if (element.dataset.animated) return;
-    
-    const finalValue = element.textContent.trim();
-    const isDecimal = finalValue.includes('.');
-    const numericValue = parseFloat(finalValue);
-    
-    if (isNaN(numericValue)) return;
-    
-    element.dataset.animated = 'true';
-    let currentValue = 0;
-    const duration = 1200;
-    const increment = numericValue / (duration / 16);
-    
-    const counter = setInterval(() => {
-      currentValue += increment;
-      
-      if (currentValue >= numericValue) {
-        element.textContent = finalValue;
-        clearInterval(counter);
-      } else {
-        element.textContent = isDecimal 
-          ? currentValue.toFixed(2) 
-          : Math.floor(currentValue);
-      }
-    }, 16);
-  };
-
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
+        entry.target.style.animation = 'fadeUp 0.6s ease forwards';
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.1 });
 
-  counterElements.forEach(el => counterObserver.observe(el));
+  elements.forEach(el => observer.observe(el));
 }
 
-// ===== SMOOTH SCROLL BEHAVIOR =====
+// Parallax Effect
+function initParallax() {
+  window.addEventListener('scroll', () => {
+    const orb1 = document.querySelector('.hero-orb1');
+    const orb2 = document.querySelector('.hero-orb2');
+    const scrollY = window.scrollY;
+    orb1.style.transform = `translate(-50%, ${scrollY * 0.5}px)`;
+    orb2.style.transform = `translate(0, ${scrollY * 0.3}px)`;
+  });
+}
+
+// Smooth Scroll
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
 }
 
-// ===== STAGGERED CARD ANIMATIONS =====
+// Card Stagger Animation
 function initCardStagger() {
-  const cardGroups = [
-    { selector: '.skills-grid .skill-card', delay: 0.08 },
-    { selector: '.projects-grid .project-card', delay: 0.1 },
-    { selector: '.edu-grid .edu-card', delay: 0.1 },
-    { selector: '.activity-list .activity-item', delay: 0.08 }
-  ];
+  const grids = document.querySelectorAll('.skills-grid, .projects-grid, .cert-grid, .activity-list');
+  grids.forEach(grid => {
+    const cards = grid.querySelectorAll('[class*="card"], .activity-item');
+    cards.forEach((card, i) => {
+      card.style.animationDelay = `${i * 0.1}s`;
+    });
+  });
+}
 
-  cardGroups.forEach(group => {
-    const cards = document.querySelectorAll(group.selector);
-    cards.forEach((card, index) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          setTimeout(() => {
-            card.style.transition = `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)`;
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, index * group.delay * 1000);
-          observer.unobserve(card);
+// Animated Counter (if needed for future stats)
+function initAnimatedCounters() {
+  const stats = document.querySelectorAll('.stat-block strong');
+  stats.forEach(stat => {
+    const finalValue = parseInt(stat.textContent);
+    if (!isNaN(finalValue)) {
+      let current = 0;
+      const increment = finalValue / 30;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= finalValue) {
+          stat.textContent = finalValue + '+';
+          clearInterval(timer);
+        } else {
+          stat.textContent = Math.floor(current) + '+';
         }
-      }, { threshold: 0.1 });
-
-      observer.observe(card);
-    });
-  });
-}
-
-// ===== HERO PROFILE ANIMATION =====
-function initHeroProfileAnimation() {
-  const heroProfile = document.querySelector('.hero-profile-frame');
-  if (heroProfile) {
-    heroProfile.style.animation = 'float 4s ease-in-out infinite';
-    
-    // Add glow effect on hover
-    heroProfile.addEventListener('mouseenter', () => {
-      heroProfile.style.boxShadow = '0 36px 80px rgba(123, 110, 246, 0.3), 0 0 40px rgba(123, 110, 246, 0.2)';
-    });
-    
-    heroProfile.addEventListener('mouseleave', () => {
-      heroProfile.style.boxShadow = '0 36px 80px rgba(0,0,0,0.35)';
-    });
-  }
-}
-
-// ===== SMOOTH NAVBAR BACKGROUND ON SCROLL =====
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 50) {
-    nav.style.background = 'rgba(10,10,15,0.95)';
-    nav.style.backdropFilter = 'blur(16px)';
-  } else {
-    nav.style.background = 'rgba(10,10,15,0.85)';
-    nav.style.backdropFilter = 'blur(12px)';
-  }
-});
-
-// ===== MOUSE TRACKING CURSOR EFFECT =====
-const createRipple = (e) => {
-  const buttons = document.querySelectorAll('.btn, .nav-cta, .project-link, .contact-link');
-  buttons.forEach(btn => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
-      const ripple = document.createElement('span');
-      ripple.style.position = 'absolute';
-      ripple.style.left = x + 'px';
-      ripple.style.top = y + 'px';
-      ripple.style.width = '0';
-      ripple.style.height = '0';
-      ripple.style.borderRadius = '50%';
-      ripple.style.background = 'rgba(255,255,255,0.5)';
-      ripple.style.transform = 'translate(-50%, -50%)';
-      ripple.style.pointerEvents = 'none';
-      ripple.style.animation = 'ripple 0.6s ease-out';
-      
-      btn.style.position = 'relative';
-      btn.style.overflow = 'hidden';
-      btn.appendChild(ripple);
-
-      setTimeout(() => ripple.remove(), 600);
+      }, 30);
     }
   });
-};
-
-document.addEventListener('mousemove', createRipple);
-
-// Add ripple animation
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes ripple {
-    to {
-      width: 100px;
-      height: 100px;
-      opacity: 0;
-    }
-  }
-`;
-document.head.appendChild(style);
+}
 </script>
 
 </body>
