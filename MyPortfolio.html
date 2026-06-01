@@ -1301,6 +1301,22 @@
     .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
     footer { flex-direction: column; gap: 8px; text-align: center; }
+    
+    /* Mobile responsive fixes */
+    .about-grid { grid-template-columns: 1fr; }
+    .highlight-card.highlight-intro { grid-column: span 1; }
+    .highlight-card { min-height: auto; padding: 1.5rem; }
+    .location-map-container { height: 250px; margin-top: 0.8rem; }
+  }
+
+  @media (max-width: 600px) {
+    section, .contact-section { padding-left: 1rem; padding-right: 1rem; }
+    .about-highlights { padding: 60px 1rem 80px; }
+    h2 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+    .highlight-card { padding: 1.2rem; min-height: auto; }
+    .location-map-container { height: 220px; }
+    .stat-block { padding: 0.8rem; }
+    .stat-block strong { font-size: 1.4rem; }
   }
 </style>
 </head>
