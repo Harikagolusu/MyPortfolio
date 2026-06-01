@@ -4,7 +4,7 @@
   "public": true,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!.*\\.(?:js|css|png|jpg|jpeg|svg|gif|webp|ico)).*)",
       "destination": "/MyPortfolio.html"
     }
   ],
