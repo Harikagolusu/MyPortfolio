@@ -509,25 +509,39 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .highlight-badges-title {
+    width: 100%;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #f8f7ff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.65rem;
   }
 
   .highlight-badge {
-    padding: 0.8rem 1.1rem;
-    background: rgba(123, 110, 246, 0.12);
-    border: 0.5px solid rgba(123, 110, 246, 0.25);
+    padding: 0.9rem 1.2rem;
+    background: rgba(123, 110, 246, 0.18);
+    border: 0.5px solid rgba(123, 110, 246, 0.35);
     border-radius: 999px;
     color: #f8f7ff;
-    font-size: 0.92rem;
-    font-weight: 600;
-    text-shadow: 0 0 4px rgba(255,255,255,0.08);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   }
 
   .highlight-badge:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 24px rgba(123, 110, 246, 0.18);
-    background: rgba(123, 110, 246, 0.2);
+    background: rgba(123, 110, 246, 0.26);
   }
 
   .hero-card h3 {
@@ -1422,6 +1436,7 @@
   </div>
 
   <div class="highlight-badges">
+    <div class="highlight-badges-title">Certifications</div>
     <span class="highlight-badge">AWS Cloud Practitioner (CLF-C02)</span>
     <span class="highlight-badge">AWS Solutions Architect – Associate</span>
     <span class="highlight-badge">OCI AI Foundations Associate</span>
