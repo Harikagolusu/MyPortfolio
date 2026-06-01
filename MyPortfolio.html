@@ -1856,13 +1856,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===== INTERSECTION OBSERVER FOR SCROLL-TRIGGERED ANIMATIONS =====
 function initScrollAnimations() {
   const observerOptions = {
-    threshold: 0.08,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting || entry.intersectionRatio > 0) {
         entry.target.classList.add('visible');
         // Stagger effect for multiple items
         if (entry.target.classList.contains('stagger-item')) {
