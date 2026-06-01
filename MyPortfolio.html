@@ -514,11 +514,20 @@
 
   .highlight-badge {
     padding: 0.8rem 1.1rem;
-    background: rgba(255,255,255,0.05);
-    border: 0.5px solid var(--border);
+    background: rgba(123, 110, 246, 0.12);
+    border: 0.5px solid rgba(123, 110, 246, 0.25);
     border-radius: 999px;
-    color: var(--muted);
+    color: #f8f7ff;
     font-size: 0.92rem;
+    font-weight: 600;
+    text-shadow: 0 0 4px rgba(255,255,255,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  }
+
+  .highlight-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(123, 110, 246, 0.18);
+    background: rgba(123, 110, 246, 0.2);
   }
 
   .hero-card h3 {
